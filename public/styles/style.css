@@ -1,0 +1,172 @@
+/*
+  #f9fafb Fondo y letra de anconrd
+  #f3f4f6
+  #e5e7eb
+  #d1d5db border color shadow
+  #9ca3af border color
+  #6b7280
+  #4b5563 Color Boton
+  #374151 Color Boton Hover
+  #1f2937
+  #111827
+  #030712 Color de letra
+  */
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+  color: #030712;
+}
+
+main {
+  margin: 0 20%;
+  overflow: hidden;
+}
+
+section {
+  padding: 5% 0 5% 0;
+}
+
+.search {
+  z-index: 10;
+  border-bottom: 4px solid #9ca3af;
+  background-color: #f9fafb;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-item {
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #030712;
+}
+
+.search-item:hover {
+  filter: saturate(20%);
+  color: #4b5563;
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 900px;
+  width: 100%;
+  color: #030712;
+
+
+}
+
+.hero-img {
+  height: 600px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.hero-title {
+  padding: 10px 0;
+  font-size: 100px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-description {
+  width: 65%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.bento-img>h1 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.bento-img {
+  font-family: "M PLUS 2 Variable", sans-serif;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #d1d5db;
+  display: flex;
+  flex-direction: column;
+
+  align-items: left;
+  justify-content: space-between;
+}
+
+.bento-item {
+  font-family: "M PLUS 2 Variable", sans-serif;
+
+  border: 1px solid #9ca3af;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0 10px;
+}
+
+.bento-item-price {
+  font-family: "M PLUS 2 Variable", sans-serif;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #9ca3af;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #d1d5db;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.bento-item-span-5-1 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+.bento-item-span-3-1 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.bento-item-span-3-4 {
+  grid-column: span 3;
+  grid-row: span 4;
+}
+
+.bento-item-span-3-3 {
+  grid-column: span 3;
+  grid-row: span 3;
+}
+
+.bento-item>p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bento-item>p>span {
+  padding: 10px;
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+}
