@@ -7,40 +7,6 @@
   <title>Musical</title>
 
   <!-- MediaQuery -->
-  <style>
-    .search {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .search {
-        width: 95%;
-      }
-
-      @media (max-width: 480px) {
-        body {
-          font-size: 14px;
-        }
-      }
-
-      @media (min-width: 1200px) {
-        .container {
-          width: 80%;
-        }
-      }
-
-      @media (orientation: landscape) {
-        .image {
-          width: 100%;
-        }
-      }
-    }
-  </style>
 
   <!-- Estilos generales -->
   <link rel="stylesheet" href="styles/style.css">
@@ -154,7 +120,6 @@
             </a>
           </button>
         </div>
-
       </footer>
     </section>
 
@@ -167,15 +132,7 @@
             align-items: center;
             justify-content: center;
           ">
-        <div class="grid" style="
-              display: grid;
-              height: 100%;
-              width: 100%;
-              grid-template-columns: repeat(8, 1fr);
-              grid-template-rows: repeat(4, 1fr);
-              gap: 16px;
-              padding: 8px;
-            ">
+        <div class="grid-beneficios">
           <div class="bento-img bento-item-span-3-4">
             <h1>Beneficios</h1>
             <img src="icons/compose_music.svg" alt="" srcset="" />
@@ -229,17 +186,13 @@
             align-items: center;
             justify-content: center;
           ">
-        <div class="grid" style="
-              display: grid;
-              height: 100%;
-              width: 100%;
-              grid-template-columns: repeat(6, 1fr);
-              grid-template-rows: repeat(3, 1fr);
-              gap: 16px;
-              padding: 8px;
-              border-radius: 8px;
-            ">
-          <div class="bento-item bento-item-span-3-1">
+        <div class="grid-ventajas">
+          <div class="bento-img grid-ventajas-item-1">
+            <h1>Ventajas</h1>
+            <img class="grid-item-1-img" src="icons/mobile_user.svg" alt="" />
+          </div>
+
+          <div class="bento-item grid-ventajas-item-2">
             <p>
               Descubrimiento de nuevos talentos:
               <span>Acceder a música original y artistas emergentes que quizás no
@@ -247,12 +200,8 @@
             </p>
           </div>
 
-          <div class="bento-img bento-item-span-3-4">
-            <h1>Ventajas</h1>
-            <img src="icons/mobile_user.svg" alt="" />
-          </div>
 
-          <div class="bento-item bento-item-span-3-1">
+          <div class="bento-item grid-ventajas-item-3">
             <p>
               Soporte a artistas independientes:
               <span>Contribuir al crecimiento de la escena musical independiente
@@ -260,7 +209,7 @@
             </p>
           </div>
 
-          <div class="bento-item bento-item-span-3-1">
+          <div class="bento-item grid-ventajas-item-4">
             <p>
               Aprendizaje continuo:
               <span>La posibilidad de actualizar y mejorar la plataforma con
@@ -275,10 +224,9 @@
     <section id="precios" style="height: 600px;">
       <div class="container"
         style="display: flex; height: 100%; width: 100%; align-items: center; justify-content: center;">
-        <div class="grid"
-          style="display: grid; height: 100%; width: 100%; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 16px;  padding: 8px">
+        <div class="grid-price">
 
-          <div class="bento-item-price" style="grid-column: span 1; grid-row: span 2;">
+          <div class="bento-item-price">
 
             <div class="card">
               <p class="price-name">
@@ -338,7 +286,7 @@
 
           </div>
 
-          <div class="bento-item-price" style="grid-column: span 1; grid-row: span 2;">
+          <div class="bento-item-price">
 
             <div class="card">
               <p class="price-name">
