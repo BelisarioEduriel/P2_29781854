@@ -1,6 +1,6 @@
-import sqlite3 from 'sqlite3';
+import sqlite3 from "sqlite3";
 
-const db = new sqlite3.Database('database.db');
+const db = new sqlite3.Database("database.db");
 
 db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS contactos (
@@ -24,6 +24,18 @@ class ContactosModel {
           return reject(err);
         }
         resolve(this.lastID);
+      });
+    });
+  }
+
+  static getAllContacts() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM contactos`;
+      db.all(query, [], (err, rows) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(rows);
       });
     });
   }
