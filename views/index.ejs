@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Musical</title>
+  <link rel="stylesheet" href="estilos.css">
 
+  <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
   <!-- MediaQuery -->
 
   <!-- Estilos generales -->
@@ -352,9 +354,59 @@
     </section>
   </main>
 
+  <div class="container-form">
+    <div class="info-form">
+      <h2>Contáctanos</h2>
+      <p>Para cualquier error relacionado con la pagina. Enviar su reporte a los siguientes datos o por nuestro
+        formulario en la pagina.</p>
+      <a href="#"><i class="fa fa-phone"></i> Teléfono: +58-4243586737</a>
+      <a href="#"><i class="fa fa-envelope"></i> Correo: Belisarioeduriel@gmail.com</a>
+    </div>
+    <form id="contactForm" action="/formulario" autocomplete="off" method="post">
+      <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" class="campo">
+      <input type="email" name="email" id="email" placeholder="Tu Email" class="campo">
+      <textarea name="mensaje" id="mensaje" placeholder="Tu Mensaje..."></textarea>
+      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+    </form>
+    <div id="resultMessage"></div>
+  </div>
+
+  <script>
+  console.log("resultMessage")
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const resultMessage = document.getElementById('resultMessage');
+
+      if (nombre === '') {
+        resultMessage.textContent = 'Por favor, ingrese su nombre.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        resultMessage.textContent = 'Por favor, ingrese un correo electrónico válido.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      if (mensaje === '') {
+        resultMessage.textContent = 'Por favor, ingrese un mensaje.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      resultMessage.textContent = 'Mensaje enviado correctamente!';
+      resultMessage.style.color = 'green';
+  
+    });
+  </script>
+
   <footer style="height: 30px; font-size: 12px; color:#6b7280; text-align: center;">
     Hecho por Wilmer Belisario.
   </footer>
 </body>
-
-</html>
