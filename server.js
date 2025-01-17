@@ -17,11 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+
 app.get("/", (req, res) => {
   res.render("index", {
     nombrecompleto: "Wilmer Eduriel Belisario Sifontes",
     cedula: "29781854",
-    seccion: "Seccion 3",
+    seccion: "Seccion 3",    
   });
 });
 

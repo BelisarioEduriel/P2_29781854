@@ -2,8 +2,7 @@ import ContactosModel from "../models/ContactosModel.js";
 
 class ContactosController {
   static async add(req, res) {
-    const { email, nombre, mensaje } = req.body;
-    const ip = req.ip;
+    const { email, nombre, mensaje, country, ip } = req.body;
     const fecha = new Date();
 
     if (!email || !nombre || !mensaje) {
@@ -11,7 +10,14 @@ class ContactosController {
     }
 
     try {
-      await ContactosModel.saveContact({ email, nombre, mensaje, ip, fecha });
+      await ContactosModel.saveContact({
+        email,
+        nombre,
+        mensaje,
+        ip,
+        fecha,
+        country,
+      });
       res.status(201).send("Contacto guardado correctamente.");
     } catch (error) {
       res.status(500).send("Error al guardar los datos.");

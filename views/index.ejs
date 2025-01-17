@@ -2,12 +2,22 @@
 <html lang="es">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Musical</title>
   <link rel="stylesheet" href="estilos.css">
 
   <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4L5YYEGMZ"></script>
+  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-B4L5YYEGMZ');
+  </script>
   <!-- MediaQuery -->
 
   <!-- Estilos generales -->
@@ -356,75 +366,94 @@
 
   <div class="container-form">
     <div class="info-form">
-        <h2>Contáctanos</h2>
-        <p>Para cualquier error relacionado con la página. Enviar su reporte a los siguientes datos o por nuestro formulario en la página.</p>
-        <a href="#"><i class="fa fa-phone"></i> Teléfono: +58-4243586737</a>
-        <a href="#"><i class="fa fa-envelope"></i> Correo: Belisarioeduriel@gmail.com</a>
+      <h2>Contáctanos</h2>
+      <p>Para cualquier error relacionado con la página. Enviar su reporte a los siguientes datos o por nuestro
+        formulario en la página.</p>
+      <a href="#"><i class="fa fa-phone"></i> Teléfono: +58-4243586737</a>
+      <a href="#"><i class="fa fa-envelope"></i> Correo: Belisarioeduriel@gmail.com</a>
     </div>
     <form id="contactForm" action="/formulario" autocomplete="off" method="post">
-        <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" class="campo">
-        <input type="email" name="email" id="email" placeholder="Tu Email" class="campo">
-        <textarea name="mensaje" id="mensaje" placeholder="Tu Mensaje..."></textarea>
-        <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+      <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" class="campo">
+      <input type="email" name="email" id="email" placeholder="Tu Email" class="campo">
+      <textarea name="mensaje" id="mensaje" placeholder="Tu Mensaje..."></textarea>
+      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
     </form>
     <div id="resultMessage"></div>
-</div>
+  </div>
 
-<script>
+  <script>
+
+    async function fetchUserData() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        return ""
+      }
+    }
+
+
+
+
     document.getElementById('contactForm').addEventListener('submit', async function (event) {
-        event.preventDefault(); 
+      event.preventDefault();
 
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const mensaje = document.getElementById('mensaje').value.trim();
-        const resultMessage = document.getElementById('resultMessage');
+      const userData = await fetchUserData();
+      const country = userData.country_name
+      const ip = userData.ip
 
-        // Validación de campos
-        if (nombre === '') {
-            resultMessage.textContent = 'Por favor, ingrese su nombre.';
-            resultMessage.style.color = 'red';
-            return;
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      const resultMessage = document.getElementById('resultMessage');
+
+
+      if (nombre === '') {
+        resultMessage.textContent = 'Por favor, ingrese su nombre.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        resultMessage.textContent = 'Por favor, ingrese un correo electrónico válido.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      if (mensaje === '') {
+        resultMessage.textContent = 'Por favor, ingrese un mensaje.';
+        resultMessage.style.color = 'red';
+        return;
+      }
+
+      try {
+        const response = await fetch('/formulario', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ nombre, email, mensaje, country, ip }),
+        });
+
+        if (response.ok) {
+          const result = await response.text();
+          resultMessage.textContent = result;
+          resultMessage.style.color = 'green';
+
+          document.getElementById('contactForm').reset();
+        } else {
+          const errorText = await response.text();
+          resultMessage.textContent = "Error: " + errorText;
+          resultMessage.style.color = 'red';
         }
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            resultMessage.textContent = 'Por favor, ingrese un correo electrónico válido.';
-            resultMessage.style.color = 'red';
-            return;
-        }
-
-        if (mensaje === '') {
-            resultMessage.textContent = 'Por favor, ingrese un mensaje.';
-            resultMessage.style.color = 'red';
-            return;
-        }
-
-        try {
-          const response = await fetch('/formulario', { 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ nombre, email, mensaje }),
-            });
-
-            if (response.ok) {
-                const result = await response.text();
-                resultMessage.textContent = result; 
-                resultMessage.style.color = 'green';
-                
-                document.getElementById('contactForm').reset();
-            } else {
-                const errorText = await response.text();
-                resultMessage.textContent = "Error: " + errorText; 
-                resultMessage.style.color = 'red';
-            }
-        } catch (error) {
-            resultMessage.textContent = "Error al enviar el contacto."; 
-            resultMessage.style.color = 'red';
-        }
+      } catch (error) {
+        resultMessage.textContent = "Error al enviar el contacto.";
+        resultMessage.style.color = 'red';
+      }
     });
-</script>
+  </script>
 
   <footer style="height: 30px; font-size: 12px; color:#6b7280; text-align: center;">
     Hecho por Wilmer Belisario.
