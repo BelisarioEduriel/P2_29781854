@@ -425,7 +425,7 @@
       }
 
       // Obtener el token de reCAPTCHA
-      const recaptchaResponse = await grecaptcha.execute('6LeBzrsqAAAAAIsKx6yOwa7WNg2Ip9Ek4ogHeJiH', { action: 'submit' });
+      const recaptchaResponse = await grecaptcha.enterprise.execute('6LeBzrsqAAAAAIsKx6yOwa7WNg2Ip9Ek4ogHeJiH', { action: 'LOGIN' });
 
       if (!recaptchaResponse) {
         resultMessage.textContent = 'Por favor, seleccione el reCAPTCHA.';
