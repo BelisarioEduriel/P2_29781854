@@ -1,4 +1,5 @@
 import ContactosModel from "../models/ContactosModel.js";
+import emailHelper from "../helpers/emailHelper.js";
 
 class ContactosController {
   static async add(req, res) {
@@ -18,7 +19,19 @@ class ContactosController {
         fecha,
         country,
       });
+      
+      let info = await emailHelper({
+        email,
+        nombre,
+        mensaje,
+        ip,
+        fecha,
+        country,
+      });
+
+      
       res.status(201).send("Contacto guardado correctamente.");
+
     } catch (error) {
       res.status(500).send("Error al guardar los datos.");
     }

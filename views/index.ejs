@@ -10,16 +10,9 @@
 
   <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4L5YYEGMZ"></script>
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcC6rkqAAAAAJKDEn7ZK24Qs0wIgqM6L9jxc6dQ"></script>
 
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-B4L5YYEGMZ');
-  </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- MediaQuery -->
 
   <!-- Estilos generales -->
@@ -373,6 +366,13 @@
         formulario en la página.</p>
       <a href="#"><i class="fa fa-phone"></i> Teléfono: +58-4243586737</a>
       <a href="#"><i class="fa fa-envelope"></i> Correo: Belisarioeduriel@gmail.com</a>
+      <a href="#"><i class="fa fa-envelope"></i> Direccion </a>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d942.4224381768514!2d-120.97795069046836!3d37.648744434574446!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8090540d6db75ea1%3A0xf99c4b5bdbc2613c!2s1165%20Scenic%20Dr%20Ste%20B%2C%20Modesto%2C%20CA%2095350%2C%20EE.%20UU.!5e1!3m2!1ses!2sve!4v1737137533833!5m2!1ses!2sve"
+        width="500" height="250" style="border: 2px;;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
     <form id="contactForm" action="/formulario" autocomplete="off" method="post">
       <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" class="campo">
@@ -395,9 +395,6 @@
         return ""
       }
     }
-
-
-
 
     document.getElementById('contactForm').addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -455,8 +452,11 @@
         resultMessage.textContent = "Error al enviar el contacto.";
         resultMessage.style.color = 'red';
       }
+
     });
   </script>
+
+
 
   <footer style="height: 30px; font-size: 12px; color:#6b7280; text-align: center;">
     Hecho por Wilmer Belisario.
