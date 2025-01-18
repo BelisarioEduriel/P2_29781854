@@ -376,7 +376,7 @@
       <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" class="campo">
       <input type="email" name="email" id="email" placeholder="Tu Email" class="campo">
       <textarea name="mensaje" id="mensaje" placeholder="Tu Mensaje..."></textarea>
-      <div class="g-recaptcha" data-sitekey="6LdBy7sqAAAAAAtZdLcjlT_m58ciyaxhpUrt37KD"></div>
+      <div class="g-recaptcha" data-sitekey="6LeBzrsqAAAAAIsKx6yOwa7WNg2Ip9Ek4ogHeJiH"></div>
       <button type="submit" class="btn-enviar">Enviar Mensaje</button>
     </form>
     <div id="resultMessage"></div>
@@ -425,7 +425,7 @@
       }
 
       // Obtener el token de reCAPTCHA
-      const recaptchaResponse = await grecaptcha.execute('6LdBy7sqAAAAAAtZdLcjlT_m58ciyaxhpUrt37KD', { action: 'submit' });
+      const recaptchaResponse = await grecaptcha.execute('6LeBzrsqAAAAAIsKx6yOwa7WNg2Ip9Ek4ogHeJiH', { action: 'submit' });
 
       if (!recaptchaResponse) {
         resultMessage.textContent = 'Por favor, seleccione el reCAPTCHA.';
